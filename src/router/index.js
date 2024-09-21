@@ -1,3 +1,5 @@
+export { ShippingInfo } from "../components/product/ShippingInfo";
+
 export { ProductCard } from "../components/product/ProductCard";
 export { Home } from "../screen/home/Home";
 export { Layout } from "../components/common/Layout";

@@ -187,13 +187,18 @@ body {
 /*  modal-overlay */
 .modal-overlay {
   position: fixed;
-  top: 25%;
-  left: 25%;
+
+  top: 50%;
+  left: 50%;
   width: 50%;
   height: 500px;
   background-color: white;
   z-index: 50001;
+
+  /* Transform untuk menggeser ke tengah */
+  transform: translate(-50%, -50%);
 }
+
 .overlay-bg {
   position: fixed;
   top: 0;
