@@ -1,3 +1,5 @@
+export { InstagramPost } from "../components/hero/InstagramPost";
+
 export { Testimonials } from "../components/hero/Testimonials";
 
 export { ProductSlide } from "../components/product/ProductSlide";
