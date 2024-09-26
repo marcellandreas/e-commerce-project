@@ -46,21 +46,23 @@ export const ProductCard = ({
 
   const openModal = () => {
     setIsModalOpen(true);
+    document.querySelector(".slick-slider").style.overflow = "none";
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
+    document.querySelector(".slick-slider").style.overflow = "hidden";
   };
   return (
     <>
-      <div className="product card">
+      <div className="product card ">
         <div className="images h-96">
           {images.map((cover, index) => (
             <img
               key={index}
               src={cover?.image}
               alt={id}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover "
             />
           ))}
           <div className="flex justify-between w-full p-5 absolute top-0 left-0">

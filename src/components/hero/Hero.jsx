@@ -12,7 +12,7 @@ function SampleNextArrow(props) {
   const { onClick } = props;
   return (
     <div
-      className=" absolute bottom-0 left-96 lg:left-1/2 slider-btn"
+      className="absolute bottom-0 md:left-[55%] lg:left-[53%] transform -translate-x-1/2 flex items-center justify-center slider-btn z-10"
       onClick={onClick}
     >
       <button className="next">
@@ -26,10 +26,10 @@ function SamplePrevArrow(props) {
   const { onClick } = props;
   return (
     <div
-      className=" absolute bottom-0 bg-white text-primary left-96 lg:left-[46%] slider-btn z-10"
+      className="absolute bottom-0 bg-white text-primary md:left-[45%] lg:left-[47%]  transform -translate-x-1/2 flex items-center justify-center slider-btn z-10"
       onClick={onClick}
     >
-      <button className="next">
+      <button className="prev">
         <MdKeyboardArrowLeft size={50} />
       </button>
     </div>

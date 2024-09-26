@@ -187,18 +187,13 @@ body {
 /*  modal-overlay */
 .modal-overlay {
   position: fixed;
-
-  top: 50%;
-  left: 50%;
+  top: 25%;
+  left: 25%;
   width: 50%;
   height: 500px;
   background-color: white;
   z-index: 50001;
-
-  /* Transform untuk menggeser ke tengah */
-  transform: translate(-50%, -50%);
 }
-
 .overlay-bg {
   position: fixed;
   top: 0;
@@ -239,7 +234,8 @@ body {
   width: 69px !important;
 }
 .slick-slider {
-  z-index: 1;
+  z-index: 999 !important;
+  overflow: visible !important;
 }
 /* Cart Model */
 .cartmodel {
