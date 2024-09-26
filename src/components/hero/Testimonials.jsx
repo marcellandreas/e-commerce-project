@@ -1,7 +1,46 @@
-import React from "react";
 import { BodyOne, Title } from "../Molecules/MoleculesComponents";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
+
+function SampleNextArrow(props) {
+  const { onClick } = props;
+  return (
+    <div
+      className="absolute bottom-0 right-0 bg-white text-primary rounded-full slider-btn"
+      onClick={onClick}
+    >
+      <button className="next">
+        <MdKeyboardArrowRight size={32} />
+      </button>
+    </div>
+  );
+}
+
+function SamplePrevArrow(props) {
+  const { onClick } = props;
+  return (
+    <div
+      className="absolute bottom-0 right-20 bg-white text-primary rounded-full slider-btn z-10"
+      onClick={onClick}
+    >
+      <button className="next">
+        <MdKeyboardArrowLeft size={32} />
+      </button>
+    </div>
+  );
+}
 
 export function Testimonials() {
+  const settings = {
+    dots: false,
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
+  };
   return (
     <>
       <section className="testimonials">
@@ -42,17 +81,18 @@ export function Testimonials() {
               point of using Lorem Ipsum is that it has a more-or-less normal
               distribution of letters,.
             </BodyOne>
-
-            <TestimonialCard
-              name="marcell"
-              post="software engineer"
-              cover="../images/testimonial/pict5.png"
-            />
-            <TestimonialCard
-              name="marcell"
-              post="software engineer"
-              cover="../images/testimonial/pict5.png"
-            />
+            <Slider {...settings}>
+              <TestimonialCard
+                name="marcell"
+                post="software engineer"
+                cover="../images/testimonial/pic5.jpg"
+              />
+              <TestimonialCard
+                name="marcell"
+                post="software engineer"
+                cover="../images/testimonial/pic6.jpg"
+              />
+            </Slider>
           </div>
         </div>
       </section>

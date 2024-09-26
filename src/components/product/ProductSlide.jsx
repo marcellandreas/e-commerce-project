@@ -1,7 +1,7 @@
-import Slider from "react-slick";
 import { BodyOne, Title } from "../Molecules/MoleculesComponents";
 import { productlists } from "../../assets/data/data";
 import { ProductCard } from "./ProductCard";
+import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
