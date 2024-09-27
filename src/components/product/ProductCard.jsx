@@ -12,6 +12,8 @@ import {
 } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai";
 import { FaX } from "react-icons/fa6";
+import { useDispatch } from "react-redux";
+import cartSlice, { CartActions } from "../../redux/slice/cartSlice";
 
 export const renderRatingStars = (rating) => {
   const totalStars = 5;
@@ -43,6 +45,7 @@ export const ProductCard = ({
   color,
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const dispatch = useDispatch();
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -52,6 +55,14 @@ export const ProductCard = ({
   const closeModal = () => {
     setIsModalOpen(false);
     document.querySelector(".slick-slider").style.overflow = "hidden";
+  };
+
+  const discountPrice = prices[0].value - (prices[0].value * discount) / 100;
+
+  const addToCart = () => {
+    dispatch(
+      CartActions.addToCart({ id, title, price: discountPrice, images })
+    );
   };
   return (
     <>
@@ -80,7 +91,10 @@ export const ProductCard = ({
             >
               Quick
             </button>
-            <button className=" add-to-cart-btn product-btn primary-btn">
+            <button
+              onClick={addToCart}
+              className=" add-to-cart-btn product-btn primary-btn"
+            >
               <IoCart size={23} />
             </button>
             <button className=" love-to-cart-btn product-btn primary-btn">
