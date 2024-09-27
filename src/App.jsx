@@ -1,6 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Header } from "./components/common/Header";
-import { Home, Layout } from "./router";
+import { Home, Layout, ProductDetails, Shop } from "./router";
 
 const App = () => {
   return (
@@ -12,6 +11,22 @@ const App = () => {
             element={
               <Layout>
                 <Home />
+              </Layout>
+            }
+          />
+          <Route
+            path="/shop"
+            element={
+              <Layout>
+                <Shop />
+              </Layout>
+            }
+          />
+          <Route
+            path="/product/details/:productId"
+            element={
+              <Layout>
+                <ProductDetails />
               </Layout>
             }
           />

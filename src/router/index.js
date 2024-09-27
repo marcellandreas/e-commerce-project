@@ -1,9 +1,11 @@
-export { InstagramPost } from "../components/hero/InstagramPost";
+export { ProductDetails } from "../screen/product/ProductDetails";
 
+export { Shop } from "../screen/shop/Shop";
+
+export { InstagramPost } from "../components/hero/InstagramPost";
 export { Testimonials } from "../components/hero/Testimonials";
 
 export { ProductSlide } from "../components/product/ProductSlide";
-
 export { ShippingInfo } from "../components/product/ShippingInfo";
 export { ProductCard } from "../components/product/ProductCard";
 export { Home } from "../screen/home/Home";

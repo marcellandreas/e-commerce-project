@@ -80,7 +80,7 @@ export function ProductSlideCard() {
     ],
   };
   return (
-    <div className=" relative">
+    <div className=" relative z-0">
       <Slider {...settings}>
         {productlists.map((product) => (
           <ProductCard

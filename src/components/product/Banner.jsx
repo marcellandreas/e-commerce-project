@@ -7,12 +7,12 @@ export function Banner() {
       <section className="flex flex-col lg:flex-row items-center justify-between pt-20">
         {promotionalInfo.map((info) => (
           <>
-            <div className=" box relative w-full" key={info.id}>
-              <div className="w-full h-[80vh]">
+            <div className=" relative w-full box " key={info.id}>
+              <div className="w-full min-h-[40vh]">
                 <img
                   src={info.image}
                   className="w-full h-full object-cover"
-                  alt=""
+                  alt={info.title}
                 />
               </div>
               <div className=" absolute top-0 left-0 p-3 md:p-8 lg:w-2/3">
