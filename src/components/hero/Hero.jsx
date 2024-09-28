@@ -47,7 +47,7 @@ export const Hero = () => {
   };
   return (
     <>
-      <section className=" h-[50vh] lg:h-[90vh] mt-20 bg-white-100 relative z-1">
+      <section className=" h-[50vh] lg:h-[90vh] mt-20 bg-white-100 relative -z-10">
         <Slider {...settings}>
           {herolist.map((data) => (
             <HeroItem

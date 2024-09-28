@@ -1,14 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
+import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
+import { IoSearchOutline } from "react-icons/io5";
+import { useLocation } from "react-router-dom";
 import Logo from "../../assets/common/logo.png";
 import { menulists } from "../../assets/data/data";
-import {
-  Badges,
-  CustomeLink,
-  CustomeNavLink,
-} from "../Molecules/MoleculesComponents";
-import { IoCartOutline, IoHeart, IoSearchOutline } from "react-icons/io5";
-import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
-import { useLocation } from "react-router-dom";
+import { ModelCart } from "../cart/ModelCart";
+import { CustomeLink, CustomeNavLink } from "../Molecules/MoleculesComponents";
 
 export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -106,18 +103,8 @@ export const Header = () => {
               }`}
             >
               <IoSearchOutline size={23} />
-              <div className="relative">
-                <IoHeart size={23} />
-                <div className="absolute -top-2 -right-1.5">
-                  <Badges color="bg-primary-green">0</Badges>
-                </div>
-              </div>
-              <div className="relative">
-                <IoCartOutline size={23} />
-                <div className="absolute -top-2 -right-1.5">
-                  <Badges color="bg-primary-green">0</Badges>
-                </div>
-              </div>
+
+              <ModelCart />
 
               <button
                 className=" lg:hidden w-10 h-10 flex justify-center items-center bg-black text-white focus:outline-none"
