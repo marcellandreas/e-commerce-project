@@ -23,7 +23,7 @@ const cartSlice = createSlice({
           price: newItem.price,
           quantity: 1,
           totalPrice: newItem.price,
-          name: newItem.name,
+          name: newItem.title,
           cover: newItem.images,
         });
         state.totalQuantity++;
@@ -52,10 +52,16 @@ const cartSlice = createSlice({
         0
       );
     },
+
+    clearCart(state) {
+      state.itemsList = [];
+      state.totalQuantity = 0;
+    },
   },
 });
 
 export const CartActions = cartSlice.actions;
+export const { clearCart } = cartSlice.actions;
 
 export const selectTotalQuantity = createSelector(
   (state) => state.cart.itemsList,

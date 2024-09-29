@@ -1,3 +1,5 @@
+export { CartPage } from "../screen/CartPage";
+
 export { ProductDetails } from "../screen/product/ProductDetails";
 
 export { Shop } from "../screen/shop/Shop";

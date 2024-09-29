@@ -4,15 +4,25 @@ import { Badges, BodyOne, Title } from "../Molecules/MoleculesComponents";
 import { useDispatch, useSelector } from "react-redux";
 import {
   CartActions,
+  clearCart,
   selectTotalPrice,
   selectTotalQuantity,
 } from "../../redux/slice/cartSlice";
+import { NavLink } from "react-router-dom";
+import { CheckoutForm } from "./CheckoutForm";
+import {
+  FavoriteActions,
+  selectTotalFavorite,
+} from "../../redux/slice/favouriteSlice";
 
 export const ModelCart = () => {
   const totalQuantity = useSelector(selectTotalQuantity);
   const cartItems = useSelector((state) => state.cart.itemsList);
 
   const totalPrice = useSelector(selectTotalPrice);
+  const totalFavorites = useSelector(selectTotalFavorite);
+  const favItems = useSelector((state) => state.favorite.favoritesItemList);
+
   const [isOpen, setIsOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const [isActiveTab, setIsActiveTab] = useState(false);
@@ -34,12 +44,19 @@ export const ModelCart = () => {
   const handleTabChange = (tab) => {
     setIsActiveTab(tab);
   };
+
+  const handlePaymentSuccess = () => {
+    console.log("===================");
+    console.log("payment success");
+    console.log("===================");
+    clearCart();
+  };
   return (
     <>
       <button className="relative " onClick={openModal}>
         <IoHeart size={30} />
         <div className="absolute -top-2 -right-1.5">
-          <Badges color="bg-primary-green">0</Badges>
+          <Badges color="bg-primary-green">{totalFavorites}</Badges>
         </div>
       </button>
       <button className="relative" onClick={openModal}>
@@ -77,7 +94,7 @@ export const ModelCart = () => {
               >
                 wishlist
                 <span className="w-7 h-7 text-[11px] font-normal rounded-full text-white grid place-content-center bg-primary">
-                  0
+                  {totalFavorites}
                 </span>
               </button>
             </div>
@@ -108,11 +125,33 @@ export const ModelCart = () => {
                   <Title level={6}>{totalPrice.toFixed(2)}</Title>
                 </div>
                 <div className="checkout">
-                  <button className="primary-btn w-full">View Cart</button>
+                  <CheckoutForm
+                    total={totalPrice}
+                    handlePaymentSuccess={handlePaymentSuccess}
+                  ></CheckoutForm>
                 </div>
+                <NavLink to="/cart">
+                  <button className="primary-btn w-full">View Cart</button>
+                </NavLink>
               </>
             ) : (
-              <>Show</>
+              <>
+                {favItems.map((item) => (
+                  <FavoriteProduct
+                    key={item.id}
+                    id={item.id}
+                    name={item.name}
+                    cover={item.cover}
+                    quantity={item.quantity}
+                    price={item.price}
+                  />
+                ))}
+                <NavLink to="/favorite">
+                  <button className="primary-btn w-full mt-8">
+                    Check Your Favourite
+                  </button>
+                </NavLink>
+              </>
             )}
           </div>
         </>
@@ -126,6 +165,42 @@ export const CardProduct = ({ id, name, cover, quantity, price }) => {
 
   const removeCartItems = () => {
     dispatch(CartActions.removeFromAllCart(id));
+  };
+
+  return (
+    <>
+      <div className="mt-5 border-b-2 border-gray-200 pb-5">
+        <div className="flex items-center gap-5">
+          <div className="images w-20 h-20">
+            {cover?.slice(0, 1).map((image, index) => (
+              <img
+                src={image?.image}
+                alt={`product cart ${index}`}
+                key={index}
+                className="w-full h-full object-cover"
+              />
+            ))}
+          </div>
+          <div className="details w-1/2">
+            <BodyOne>{name}</BodyOne>
+            <p className=" text-primary-green">
+              {quantity} x ${price?.toFixed(2)}
+            </p>
+          </div>
+          <button className="w-10 h-10 bg-gray-200 flex items-center justify-center rounded-full text-primary">
+            <IoCloseOutline size={25} onClick={removeCartItems} />
+          </button>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export const FavoriteProduct = ({ id, name, cover, quantity, price }) => {
+  const dispatch = useDispatch();
+
+  const removeCartItems = () => {
+    dispatch(FavoriteActions.removeFromFavorite(id));
   };
 
   return (

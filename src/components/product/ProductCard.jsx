@@ -14,6 +14,10 @@ import { AiFillInstagram } from "react-icons/ai";
 import { FaX } from "react-icons/fa6";
 import { useDispatch } from "react-redux";
 import cartSlice, { CartActions } from "../../redux/slice/cartSlice";
+import favoriteSlice, {
+  FavoriteActions,
+} from "../../redux/slice/favouriteSlice";
+import favouriteSlice from "../../redux/slice/favouriteSlice";
 
 export const renderRatingStars = (rating) => {
   const totalStars = 5;
@@ -64,6 +68,17 @@ export const ProductCard = ({
       CartActions.addToCart({ id, title, price: discountPrice, images })
     );
   };
+  const handleAddToFavorites = () => {
+    dispatch(
+      FavoriteActions.addToFavorites({
+        id,
+        title,
+        price: discountPrice,
+        images,
+      })
+    );
+  };
+
   return (
     <>
       <div className="product card ">
@@ -97,7 +112,10 @@ export const ProductCard = ({
             >
               <IoCart size={23} />
             </button>
-            <button className=" love-to-cart-btn product-btn primary-btn">
+            <button
+              onClick={handleAddToFavorites}
+              className=" love-to-cart-btn product-btn primary-btn"
+            >
               <IoMdHeart size={23} />
             </button>
           </div>
